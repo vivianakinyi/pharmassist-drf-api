@@ -22,6 +22,7 @@ from django.contrib import admin
 apipatterns = patterns(
     '',
     url(r'^users/', include('users.urls', namespace='users')),
+    url(r'^pharm_auth/', include('pharm_auth.urls', namespace='auth')),
 )
 
 urlpatterns = patterns(
