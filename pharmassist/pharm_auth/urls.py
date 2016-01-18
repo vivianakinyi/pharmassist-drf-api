@@ -4,12 +4,8 @@ from . import views
 
 urlpatterns = patterns(
     '',
-    url(r'^patients/$', views.PatientListView.as_view(), name='patients'),
-    url(r'^patients/(?P<pk>[^/]+)/$',
-        views.PatientDetailView.as_view(), name='patients'),
+    url(r'^users/$', views.UserListView.as_view(), name='users'),
+    url(r'^users/(?P<pk>[^/]+)/$',
+        views.UserDetailView.as_view(), name='users'),
 
-    url(r'^pharmacists/$', views.PharmacistListView.as_view(),
-        name='pharmacists'),
-    url(r'^pharmacists/(?P<pk>[^/]+)/$',
-        views.PharmacistDetailView.as_view(), name='pharmacists'),
 )

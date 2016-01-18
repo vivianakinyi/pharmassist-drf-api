@@ -1,14 +1,8 @@
 from rest_framework import serializers
-from .models import Patient, Pharmacist
+from .models import UserProfile
 
 
-class PatientSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Patient
-
-
-class PharmacistSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Pharmacist
+        model = UserProfile

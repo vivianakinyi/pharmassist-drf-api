@@ -1,33 +1,16 @@
 from django.db import models
 
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import User
 
 
-class Patient(AbstractBaseUser):
-    """
-    Stores patient details
-    """
-    id = models.UUIDField(primary_key=True, editable=False)
-    first_name = models.CharField(max_length=60)
-    last_name = models.CharField(max_length=60)
-    email = models.EmailField(verbose_name='email_address',
-                              max_length=255,
-                              unique=True)
-
-    def __str__(self):
-        return self.email
+USER_TYPES = (
+    ('PATIENT', 'Patients or drug buyers'),
+    ('PHARMACISTS', 'Drug store owner')
+)
 
 
-class Pharmacist(AbstractBaseUser):
-    """
-    Stores pharmacists details
-    """
-    id = models.UUIDField(primary_key=True, editable=False)
-    first_name = models.CharField(max_length=60)
-    last_name = models.CharField(max_length=60)
-    email = models.EmailField(verbose_name='email_address',
-                              max_length=255,
-                              unique=True)
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    category = models.CharField(max_length=50,
+                                choices=USER_TYPES, default='PATIENT')
 
-    def __str__(self):
-        return self.email
