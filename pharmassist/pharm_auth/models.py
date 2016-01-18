@@ -20,7 +20,7 @@ class Patient(AbstractBaseUser):
 
 class Pharmacist(AbstractBaseUser):
     """
-    Stores patient details
+    Stores pharmacists details
     """
     id = models.UUIDField(primary_key=True, editable=False)
     first_name = models.CharField(max_length=60)
