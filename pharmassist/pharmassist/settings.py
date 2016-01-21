@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users',
     'pharm_auth',
     'drugs',
+    'pharmacies',
 ]
 
 MIDDLEWARE_CLASSES = [
