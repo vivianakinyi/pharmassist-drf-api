@@ -13,4 +13,3 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     category = models.CharField(max_length=50,
                                 choices=USER_TYPES, default='PATIENT')
-
