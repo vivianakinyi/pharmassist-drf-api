@@ -2,8 +2,24 @@ from django.db import models
 
 
 class Drugs(models.Model):
-    code = models.CharField(max_length=15, unique=True)
-    common_name = models.CharField(max_length=60)
-    scientific_name = models.CharField(max_length=60, blank=True)
-    price = models.FloatField(blank=True)
-    form = models. CharField(max_length=20, blank=True)
+    rxcui = models.CharField(max_length=20, null=False, default="")
+    generic_rxcui = models.CharField(max_length=20, blank=True)
+    tty = models.CharField(max_length=20, blank=False, default="")
+    full_name = models.CharField(max_length=3000, blank=False, default="")
+    rxn_dose_form = models.CharField(max_length=100, blank=False, default="")
+    full_generic_name = models.CharField(max_length=3000, blank=False, default="")
+    brand_name = models.CharField(max_length=500, blank=True)
+    display_name = models.CharField(max_length=3000, blank=False, default="")
+    route = models.CharField(max_length=100, blank=False, default="")
+    new_dose_form = models.CharField(max_length=100, blank=False, default="")
+    strength = models.CharField(max_length=500, blank=False, default="")
+    suppress_for = models.CharField(max_length=30, blank=True)
+    display_name_synonym = models.CharField(max_length=500, blank=True)
+    is_retired = models.CharField(max_length=20, blank=True)
+    sxdg_rxcui = models.CharField(max_length=20, blank=True)
+    sxdg_tty = models.CharField(max_length=20, blank=True)
+    sxdg_name = models.CharField(max_length=3000, blank=True)
+    psn = models.CharField(max_length=3000, blank=True)
+
+    def __str__(self):
+        return "{0} : {1}".format(self.tty, self.display_name)
