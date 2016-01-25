@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'users',
+    'pharm_auth',
+    'drugs',
+    'pharmacies',
 ]
 
 MIDDLEWARE_CLASSES = [
