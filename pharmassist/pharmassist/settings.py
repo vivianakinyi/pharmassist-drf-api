@@ -26,7 +26,9 @@ SECRET_KEY = '#$@id4e%pyp+m_%t21z&o_x5&kh1u4i1v2vlj5wel@^mv(f=ku'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ORIGIN_REGEX_WHITELIST = (
+    '^(https?://)?(\w+\.)?localhost\:9000$',
+)
 
 # Application definition
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'users',
     'pharm_auth',
     'drugs',
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -133,3 +137,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+CORS_ORIGIN_ALLOW_ALL = True
