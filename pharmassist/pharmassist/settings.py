@@ -56,7 +56,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', ),
     'PAGE_SIZE': 10,
 }
 
@@ -86,7 +87,7 @@ WSGI_APPLICATION = 'pharmassist.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pharmassist',
         'USER': 'pharm',
         'PASSWORD': 'password123',
