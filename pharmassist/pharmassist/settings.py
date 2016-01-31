@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',  # cross-origin
     'users',
     'pharm_auth',
     'drugs',
@@ -60,7 +61,31 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated', ),
     'PAGE_SIZE': 10,
 }
-
+SITE_ID = 1
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8012',
+    'localhost'
+)
+CORS_ALLOW_CREDENTIALS = True
+CORS_PREFLIGHT_MAX_AGE = 172800
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken',
+    'cache-control'
+)
 ROOT_URLCONF = 'pharmassist.urls'
 
 TEMPLATES = [
