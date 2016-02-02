@@ -6,4 +6,5 @@ class Pharmacy(models.Model):
     name = models.CharField(max_length=100)
     town = models.CharField(max_length=100)
     street = models.CharField(max_length=100)
-    county = models.CharField(max_length=100, default='NAIROBI')
+    county = models.CharField(max_length=100)
+    landmarks = models.CharField(max_length=200, blank=True, null=True)
