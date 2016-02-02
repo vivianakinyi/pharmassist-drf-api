@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_gis',  # django-rest-framework-gis
     'corsheaders',  # cross-origin
     'users',
     'pharm_auth',
     'drugs',
     'pharmacies',
+    'locations',
 ]
 
 MIDDLEWARE_CLASSES = [

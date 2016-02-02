@@ -25,6 +25,7 @@ apipatterns = patterns(
     url(r'^pharm_auth/', include('pharm_auth.urls', namespace='auth')),
     url(r'^drugs/', include('drugs.urls', namespace='drugs')),
     url(r'^pharmacy/', include('pharmacies.urls', namespace='pharmacy')),
+    url(r'^locations/', include('locations.urls', namespace='locations')),
 )
 
 urlpatterns = patterns(
