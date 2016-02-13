@@ -1,4 +1,4 @@
-from django.db import models
+from django.contrib.gis.db import models
 
 
 class Pharmacy(models.Model):
@@ -8,3 +8,4 @@ class Pharmacy(models.Model):
     street = models.CharField(max_length=100)
     county = models.CharField(max_length=100)
     landmarks = models.CharField(max_length=200, blank=True, null=True)
+    point = models.PointField(null=True, blank=True)

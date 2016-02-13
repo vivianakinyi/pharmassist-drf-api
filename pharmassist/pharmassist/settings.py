@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'rest_framework',
+    'rest_framework_gis',
     'corsheaders',  # cross-origin
     'users',
     'pharm_auth',
@@ -117,7 +119,7 @@ WSGI_APPLICATION = 'pharmassist.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'pharmassist',
         'USER': 'pharm',
         'PASSWORD': 'password123',
