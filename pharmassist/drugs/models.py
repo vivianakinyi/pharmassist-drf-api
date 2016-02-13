@@ -21,5 +21,7 @@ class Drugs(models.Model):
     sxdg_name = models.CharField(max_length=3000, blank=True)
     psn = models.CharField(max_length=3000, blank=True)
 
+
+
     def __str__(self):
         return "{0} : {1}".format(self.tty, self.display_name)
