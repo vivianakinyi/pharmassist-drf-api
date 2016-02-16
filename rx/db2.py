@@ -4,9 +4,9 @@ import psycopg2
 with open('RxTerms201512.txt') as csvfile:
     reader = csv.reader(csvfile, delimiter='|')
     for row in reader:
-        db = psycopg2.connect(database="pharmassist", host="localhost",
-                              port="5432", user="pharm",
-                              password="password123")
+        db = psycopg2.connect(database="new_pharm", host="localhost",
+                              port="5432", user="new_pharm",
+                              password="new_pharm")
         cursor = db.cursor()
         sql = """
         INSERT INTO drugs_drugs(

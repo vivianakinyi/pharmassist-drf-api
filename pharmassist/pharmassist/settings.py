@@ -121,9 +121,9 @@ WSGI_APPLICATION = 'pharmassist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'pharmassist',
-        'USER': 'pharm',
-        'PASSWORD': 'password123',
+        'NAME': 'new_pharm',
+        'USER': 'new_pharm',
+        'PASSWORD': 'new_pharm',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
