@@ -11,6 +11,8 @@ class DrugSerializer(serializers.ModelSerializer):
 
 
 class PriceSerializer(serializers.ModelSerializer):
+    drug_name = serializers.ReadOnlyField(source='drug.full_name')
+    pharmacy_name = serializers.ReadOnlyField(source='pharmacy.name')
 
     class Meta:
         model = Prices
