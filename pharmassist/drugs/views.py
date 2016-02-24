@@ -1,8 +1,8 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 from rest_framework import filters
 
-from .serializers import DrugSerializer
-from .models import Drugs
+from .serializers import DrugSerializer, PriceSerializer
+from .models import Drugs, Prices
 
 
 class DrugListView(ListCreateAPIView):
@@ -22,3 +22,13 @@ class DrugListView(ListCreateAPIView):
 class DrugDetailView(RetrieveUpdateAPIView):
     queryset = Drugs.objects.all()
     serializer_class = DrugSerializer
+
+
+class PriceListView(ListCreateAPIView):
+    queryset = Prices.objects.all()
+    serializer_class = PriceSerializer
+
+
+class PriceDetailView(RetrieveUpdateAPIView):
+    queryset = Prices.objects.all()
+    serializer_class = PriceSerializer
