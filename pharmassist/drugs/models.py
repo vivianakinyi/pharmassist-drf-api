@@ -1,5 +1,7 @@
 from django.db import models
 
+from pharmacies.models import Pharmacy
+
 
 class Drugs(models.Model):
     rxcui = models.CharField(max_length=20, null=False, default="")
@@ -23,3 +25,9 @@ class Drugs(models.Model):
 
     def __str__(self):
         return "{0} : {1}".format(self.tty, self.display_name)
+
+
+class Prices(models.Model):
+    drug = models.ForeignKey(Drugs)
+    pharmacy = models.ForeignKey(Pharmacy)
+    price = models.DecimalField(decimal_places=2, max_digits=8, blank=True, null=True)
