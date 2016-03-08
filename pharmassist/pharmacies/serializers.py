@@ -10,7 +10,8 @@ class PharmacySerializer(GeoFeatureModelSerializer):
     class Meta:
         model = Pharmacy
         geo_field = "point"
-        fields = ('id', 'no', 'name', 'town', 'street', 'county', 'landmarks', 'drugs')
+        fields = ('id', 'no', 'name', 'town', 'street', 'county', 'landmarks',
+                  'drugs')
 
 
 class DrugSerializer(serializers.ModelSerializer):
