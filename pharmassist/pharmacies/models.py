@@ -45,4 +45,8 @@ class Prices(models.Model):
 
     drug = models.ForeignKey(Drugs)
     pharmacy = models.ForeignKey(Pharmacy)
-    price = models.DecimalField(decimal_places=2, max_digits=8, blank=True, null=True)
+    price = models.DecimalField(decimal_places=2, max_digits=8, blank=True,
+                                null=True)
+
+    class Meta:
+        unique_together = ('pharmacy', 'drug',)
