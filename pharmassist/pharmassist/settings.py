@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',  # cross-origin
     'users',
     'pharm_auth',
-    'drugs',
+    # 'drugs',
     'pharmacies',
 ]
 

@@ -9,7 +9,7 @@ with open('RxTerms201512.txt') as csvfile:
                               password="new_pharm")
         cursor = db.cursor()
         sql = """
-        INSERT INTO drugs_drugs(
+        INSERT INTO pharmacies_drugs(
             RXCUI,GENERIC_RXCUI,TTY,FULL_NAME,\
             RXN_DOSE_FORM,FULL_GENERIC_NAME,BRAND_NAME,DISPLAY_NAME,\
             ROUTE,NEW_DOSE_FORM,STRENGTH,SUPPRESS_FOR,DISPLAY_NAME_SYNONYM,\
