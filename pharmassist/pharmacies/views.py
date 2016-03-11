@@ -46,6 +46,14 @@ class PriceListView(ListCreateAPIView):
     queryset = Prices.objects.all()
     serializer_class = PriceSerializer
 
+    filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter,
+                       filters.OrderingFilter,)
+    filter_fields = ('id', 'drug', 'pharmacy')
+
+    search_fields = ('id', 'drug', 'pharmacy')
+
+    ordering_fields = '__all__'
+
 
 class PriceDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Prices.objects.all()
