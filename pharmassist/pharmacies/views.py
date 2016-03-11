@@ -1,4 +1,7 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import (
+    ListCreateAPIView,
+    RetrieveUpdateAPIView,
+    RetrieveUpdateDestroyAPIView,)
 from rest_framework import filters
 
 from .models import Pharmacy, Drugs, Prices
@@ -15,7 +18,7 @@ class PharmacyListView(ListCreateAPIView):
     ordering_fields = '__all__'
 
 
-class PharmacyDetailView(RetrieveUpdateAPIView):
+class PharmacyDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Pharmacy.objects.all()
     serializer_class = PharmacySerializer
 
