@@ -1,4 +1,7 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import (
+    ListCreateAPIView,
+    RetrieveUpdateAPIView,
+    RetrieveUpdateDestroyAPIView,)
 from rest_framework import filters
 
 from .models import Pharmacy, Drugs, Prices
@@ -43,7 +46,15 @@ class PriceListView(ListCreateAPIView):
     queryset = Prices.objects.all()
     serializer_class = PriceSerializer
 
+    filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter,
+                       filters.OrderingFilter,)
+    filter_fields = ('id', 'drug', 'pharmacy')
 
-class PriceDetailView(RetrieveUpdateAPIView):
+    search_fields = ('id', 'drug', 'pharmacy')
+
+    ordering_fields = '__all__'
+
+
+class PriceDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Prices.objects.all()
     serializer_class = PriceSerializer
