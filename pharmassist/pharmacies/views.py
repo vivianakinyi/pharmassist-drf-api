@@ -18,7 +18,7 @@ class PharmacyListView(ListCreateAPIView):
     ordering_fields = '__all__'
 
 
-class PharmacyDetailView(RetrieveUpdateDestroyAPIView):
+class PharmacyDetailView(RetrieveUpdateAPIView):
     queryset = Pharmacy.objects.all()
     serializer_class = PharmacySerializer
 
@@ -47,6 +47,6 @@ class PriceListView(ListCreateAPIView):
     serializer_class = PriceSerializer
 
 
-class PriceDetailView(RetrieveUpdateAPIView):
+class PriceDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Prices.objects.all()
     serializer_class = PriceSerializer

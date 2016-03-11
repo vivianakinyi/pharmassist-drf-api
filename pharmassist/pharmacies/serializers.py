@@ -26,8 +26,6 @@ class PharmacySerializer(GeoFeatureModelSerializer):
                   'drugs')
 
 
-
-
 class PriceSerializer(serializers.ModelSerializer):
     drug_name = serializers.ReadOnlyField(source='drug.full_name')
     pharmacy_name = serializers.ReadOnlyField(source='pharmacy.name')
