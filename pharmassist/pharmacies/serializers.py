@@ -22,6 +22,7 @@ class PharmacySerializer(GeoFeatureModelSerializer):
     class Meta:
         model = Pharmacy
         geo_field = "point"
+        auto_bbox = True
         fields = ('id', 'no', 'name', 'town', 'street', 'county', 'landmarks',
                   'drugs')
 
