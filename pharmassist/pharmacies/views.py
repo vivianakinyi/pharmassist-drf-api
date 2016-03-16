@@ -15,10 +15,11 @@ class PharmacyListView(ListCreateAPIView):
     serializer_class = PharmacySerializer
     # distanceToPointFilter
     distance_filter_field = 'point'
+    bbox_filter_field = 'point'
     filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter,
                        filters.OrderingFilter, InBBoxFilter,
                        DistanceToPointFilter,)
-    bbox_filter_include_overlapping = True  # Optional
+    bbox_filter_include_overlapping = True
     distance_filter_convert_meters = True
 
     filter_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs')
