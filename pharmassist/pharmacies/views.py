@@ -3,6 +3,8 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView,
     RetrieveUpdateDestroyAPIView,)
 from rest_framework import filters
+from rest_framework_gis.filters import InBBoxFilter
+from rest_framework_gis.filters import DistanceToPointFilter
 
 from .models import Pharmacy, Drugs, Prices
 from .serializers import PharmacySerializer, DrugSerializer, PriceSerializer
@@ -11,8 +13,15 @@ from .serializers import PharmacySerializer, DrugSerializer, PriceSerializer
 class PharmacyListView(ListCreateAPIView):
     queryset = Pharmacy.objects.all()
     serializer_class = PharmacySerializer
+    # distanceToPointFilter
+    distance_filter_field = 'point'
+    bbox_filter_field = 'point'
     filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter,
-                       filters.OrderingFilter,)
+                       filters.OrderingFilter, InBBoxFilter,
+                       DistanceToPointFilter,)
+    bbox_filter_include_overlapping = True
+    distance_filter_convert_meters = True
+
     filter_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs')
     search_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs')
     ordering_fields = '__all__'
