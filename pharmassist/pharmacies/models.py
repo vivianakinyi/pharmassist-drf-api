@@ -20,6 +20,8 @@ class Drugs(models.Model):
     sxdg_tty = models.CharField(max_length=20, blank=True)
     sxdg_name = models.CharField(max_length=3000, blank=True)
     psn = models.CharField(max_length=3000, blank=True)
+    recommended_price = models.DecimalField(decimal_places=2, max_digits=8,
+                                            blank=True, null=True)
 
     def __str__(self):
         return "{0} : {1}".format(self.tty, self.display_name)
