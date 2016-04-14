@@ -25,14 +25,11 @@ apipatterns = patterns(
     url(r'^pharm_auth/', include('pharm_auth.urls', namespace='auth')),
     # url(r'^drugs/', include('drugs.urls', namespace='drugs')),
     url(r'^pharmacy/', include('pharmacies.urls', namespace='pharmacy')),
-
 )
 
 urlpatterns = patterns(
     '',
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^rest-auth/', include('rest_auth.urls')),
-    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     url(r'^api/', include(apipatterns, namespace='api')),
 )
