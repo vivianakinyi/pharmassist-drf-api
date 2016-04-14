@@ -24,7 +24,7 @@ class PharmacyListView(ListCreateAPIView):
 
     filter_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs')
     search_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs')
-    ordering_fields = '__all__'
+    ordering_fields = ('updated',)
 
 
 class PharmacyDetailView(RetrieveUpdateAPIView):
@@ -43,7 +43,7 @@ class DrugListView(ListCreateAPIView):
     search_fields = ('full_name', 'brand_name', 'display_name',
                      'full_generic_name', 'route',)
 
-    ordering_fields = '__all__'
+    ordering_fields = ('updated', 'counter',)
 
 
 class DrugDetailView(RetrieveUpdateAPIView):
@@ -57,11 +57,11 @@ class PriceListView(ListCreateAPIView):
 
     filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter,
                        filters.OrderingFilter,)
-    filter_fields = ('id', 'drug', 'pharmacy')
+    filter_fields = ('id', 'drug', 'pharmacy', 'price')
 
-    search_fields = ('id', 'drug', 'pharmacy')
+    search_fields = ('id', 'drug', 'pharmacy', 'price')
 
-    ordering_fields = '__all__'
+    ordering_fields = ('updated',)
 
 
 class PriceDetailView(RetrieveUpdateDestroyAPIView):

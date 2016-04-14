@@ -30,6 +30,7 @@ class PharmacySerializer(GeoFeatureModelSerializer):
 class PriceSerializer(serializers.ModelSerializer):
     drug_name = serializers.ReadOnlyField(source='drug.full_name')
     pharmacy_name = serializers.ReadOnlyField(source='pharmacy.name')
+    recommended_price = serializers.ReadOnlyField(source='drug.recommended_price')
 
     class Meta:
         model = Prices
