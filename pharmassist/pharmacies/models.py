@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.contrib.gis.db import models
 
 
@@ -22,6 +23,8 @@ class Drugs(models.Model):
     psn = models.CharField(max_length=3000, blank=True)
     recommended_price = models.DecimalField(decimal_places=2, max_digits=8,
                                             blank=True, null=True)
+    updated = models.DateTimeField(default=timezone.now)
+    counter = models.IntegerField(default=0)
 
     def __str__(self):
         return "{0} : {1}".format(self.tty, self.display_name)
@@ -36,6 +39,7 @@ class Pharmacy(models.Model):
     landmarks = models.CharField(max_length=200, blank=True, null=True)
     point = models.PointField(null=True, blank=True)
     drugs = models.ManyToManyField(Drugs, through='Prices')
+    updated = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return "{0} : {1}".format(self.name, self.town)
@@ -49,6 +53,7 @@ class Prices(models.Model):
     pharmacy = models.ForeignKey(Pharmacy)
     price = models.DecimalField(decimal_places=2, max_digits=8, blank=True,
                                 null=True)
+    updated = models.DateTimeField(default=timezone.now)
 
     class Meta:
         unique_together = ('pharmacy', 'drug',)
