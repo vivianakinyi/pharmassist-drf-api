@@ -24,12 +24,14 @@ class PharmacySerializer(GeoFeatureModelSerializer):
         geo_field = "point"
         auto_bbox = True
         fields = ('id', 'no', 'name', 'town', 'street', 'county', 'landmarks',
-                  'drugs')
+                  'owner', 'updated', 'drugs', )
 
 
 class PriceSerializer(serializers.ModelSerializer):
-    drug_name = serializers.ReadOnlyField(source='drug.full_name')
+    drug_name = serializers.ReadOnlyField(source='drug.display_name')
     pharmacy_name = serializers.ReadOnlyField(source='pharmacy.name')
+    county = serializers.ReadOnlyField(source='pharmacy.county')
+    town = serializers.ReadOnlyField(source='pharmacy.town')
     recommended_price = serializers.ReadOnlyField(source='drug.recommended_price')
 
     class Meta:

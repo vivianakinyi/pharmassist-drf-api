@@ -40,6 +40,7 @@ class Pharmacy(models.Model):
     point = models.PointField(null=True, blank=True)
     drugs = models.ManyToManyField(Drugs, through='Prices')
     updated = models.DateTimeField(default=timezone.now)
+    owner = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return "{0} : {1}".format(self.name, self.town)
