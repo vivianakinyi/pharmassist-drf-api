@@ -11,7 +11,7 @@ from .serializers import PharmacySerializer, DrugSerializer, PriceSerializer
 
 
 class PharmacyListView(ListCreateAPIView):
-    queryset = Pharmacy.objects.all()
+    queryset = Pharmacy.objects.all().order_by('-updated')
     serializer_class = PharmacySerializer
     # distanceToPointFilter
     distance_filter_field = 'point'
@@ -22,8 +22,8 @@ class PharmacyListView(ListCreateAPIView):
     bbox_filter_include_overlapping = True
     distance_filter_convert_meters = True
 
-    filter_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs')
-    search_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs')
+    filter_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs', 'owner', 'updated')
+    search_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs', 'owner', 'updated')
     ordering_fields = ('updated',)
 
 
@@ -33,15 +33,15 @@ class PharmacyDetailView(RetrieveUpdateAPIView):
 
 
 class DrugListView(ListCreateAPIView):
-    queryset = Drugs.objects.all()
+    queryset = Drugs.objects.all().order_by('-updated')
     serializer_class = DrugSerializer
     filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter,
                        filters.OrderingFilter,)
     filter_fields = ('full_name', 'brand_name', 'display_name',
-                     'full_generic_name', 'route',)
+                     'full_generic_name', 'route', 'updated',)
 
     search_fields = ('full_name', 'brand_name', 'display_name',
-                     'full_generic_name', 'route',)
+                     'full_generic_name', 'route', 'updated',)
 
     ordering_fields = ('updated', 'counter',)
 
@@ -52,14 +52,14 @@ class DrugDetailView(RetrieveUpdateAPIView):
 
 
 class PriceListView(ListCreateAPIView):
-    queryset = Prices.objects.all()
+    queryset = Prices.objects.all().order_by('-updated')
     serializer_class = PriceSerializer
 
     filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter,
                        filters.OrderingFilter,)
-    filter_fields = ('id', 'drug', 'pharmacy', 'price')
+    filter_fields = ('id', 'drug', 'pharmacy', 'price', 'updated')
 
-    search_fields = ('id', 'drug', 'pharmacy', 'price')
+    search_fields = ('id', 'drug', 'pharmacy', 'price', 'updated')
 
     ordering_fields = ('updated',)
 
