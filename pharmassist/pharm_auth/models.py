@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 
 USER_TYPES = (
     ('PATIENT', 'Patients or drug buyers'),
-    ('PHARMACISTS', 'Drug store owner')
+    ('PHARMACISTS', 'Drug store owner'),
+    ('ADMIN', 'An adminstrator superuser')
 )
 
 
