@@ -9,24 +9,6 @@ class DrugSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Drugs
-
-
-class PharmacySerializer(GeoFeatureModelSerializer):
-    # drugs = serializers.SlugRelatedField(
-    #     many=True,
-    #     read_only=True,
-    #     slug_field='full_name'
-    # )
-    drugs = DrugSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Pharmacy
-        geo_field = "point"
-        auto_bbox = True
-        fields = ('id', 'no', 'name', 'town', 'street', 'county', 'landmarks',
-                  'owner', 'updated', 'drugs', )
-
-
 class PriceSerializer(serializers.ModelSerializer):
     drug_name = serializers.ReadOnlyField(source='drug.display_name')
     pharmacy_name = serializers.ReadOnlyField(source='pharmacy.name')
@@ -36,3 +18,17 @@ class PriceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Prices
+
+class PharmacySerializer(GeoFeatureModelSerializer):
+    drugs = DrugSerializer(many=True, read_only=True)
+    pharmacy_prices = PriceSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Pharmacy
+        geo_field = "point"
+        auto_bbox = True
+        fields = ('id', 'no', 'name', 'town', 'street', 'county', 'landmarks',
+                  'owner', 'updated', 'drugs', 'pharmacy_prices',)
+
+
+
