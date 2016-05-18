@@ -22,8 +22,8 @@ class PharmacyListView(ListCreateAPIView):
     bbox_filter_include_overlapping = True
     distance_filter_convert_meters = True
 
-    filter_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs', 'owner', 'updated')
-    search_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs', 'owner', 'updated')
+    filter_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs', 'owner', 'updated', 'pharmacy_prices')
+    search_fields = ('name', 'street', 'town', 'county', 'landmarks', 'drugs', 'owner', 'updated', 'pharmacy_prices')
     ordering_fields = ('updated',)
 
 

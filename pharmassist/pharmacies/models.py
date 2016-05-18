@@ -51,7 +51,7 @@ class Prices(models.Model):
     from pharmacies.models import Pharmacy
 
     drug = models.ForeignKey(Drugs)
-    pharmacy = models.ForeignKey(Pharmacy)
+    pharmacy = models.ForeignKey(Pharmacy, related_name="pharmacy_prices")
     price = models.DecimalField(decimal_places=2, max_digits=8, blank=True,
                                 null=True)
     updated = models.DateTimeField(default=timezone.now)
